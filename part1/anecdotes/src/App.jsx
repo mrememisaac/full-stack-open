@@ -31,14 +31,16 @@ const App = () => {
     const votesClone = { ...votes, [selected]: votes[selected] + 1 };
     setVotes(votesClone);
 
-    let tally = -1;
-    let idxMostVotes = mostVoted;
+    let highestNumberOfVotes = -1;
+    let indexOfHighestNumberOfVotes = mostVoted;
     var entries = Object.entries(votesClone);
     for (const [idx, voteCount] of entries) {
-      idxMostVotes = voteCount > 0 && voteCount > tally ? idx : idxMostVotes;
-      tally = idxMostVotes > -1 ? entries[idxMostVotes][1] : tally;
+      if (voteCount > 0 && voteCount > highestNumberOfVotes) {
+        indexOfHighestNumberOfVotes = idx;
+        highestNumberOfVotes = voteCount;
+      }
     };
-    setMostVoted(idxMostVotes);
+    setMostVoted(indexOfHighestNumberOfVotes);
   }
 
   return (
