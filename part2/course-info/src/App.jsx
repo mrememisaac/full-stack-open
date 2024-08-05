@@ -1,6 +1,9 @@
+import { useState } from 'react'
 import { Course } from "./Components/Course"
 
-const App = () => {
+const App = (props) => {
+
+
   const courses = [
     {
       name: 'Half Stack application development',
@@ -45,8 +48,8 @@ const App = () => {
       ]
     }
   ]
-
   const data = courses.map(course => <Course key={course.id} course={course} />)
+
   return (
     <div>
       {data}
